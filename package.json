@@ -1,0 +1,22 @@
+{
+  "name": "payvassel",
+  "version": "1.0.0",
+  "description": "a demo that shows how to use payvassel payment gateway",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "payvassel",
+    "virtualAccounts",
+    "wallet",
+    "transfer",
+    "funding"
+  ],
+  "author": "arman grema",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2"
+  }
+}
