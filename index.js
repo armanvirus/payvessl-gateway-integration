@@ -1,7 +1,7 @@
 const express = require('express'),
       app = express(),
       dotenv = require('dotenv').config(),
-      payvassel = require("./payvessel/index")
+      payvassel = require("./payvessel")
       // Middleware to parse JSON bodies
 app.use(express.json());
 

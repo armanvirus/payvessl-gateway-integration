@@ -20,6 +20,6 @@ module.exports = async (payload) => {
     const request = await axios.post(`${process.env.PAYVASSEL_URL}api/external/request/customerReservedAccount/`,
     data,{header}
 )
-    // console.log(request)
+    console.log(request.status)
     return request
 }
