@@ -1,6 +1,5 @@
 const axios = require('axios')
 module.exports = async (payload) => {
-    console.log(process.env.PAYVASSEL_URL)
     const { email, name, phoneNumber } = payload
     const data = {
         email,
@@ -14,12 +13,16 @@ module.exports = async (payload) => {
     }
     const header = {
         'api-key': process.env.PAYVASSEL_API_KEY,
-        'api-secret':`Bearer ${process.env.PAYVASSEL_SEC_KEY}`,
+        'api-secret': `Bearer ${process.env.PAYVASSEL_SEC_KEY}`,
         'Content-Type': 'application/json'
     }
-    const request = await axios.post(`${process.env.PAYVASSEL_URL}api/external/request/customerReservedAccount/`,
-    data,{header}
-)
-    console.log(request.status)
-    return request
+    try{
+        const request = await axios.post(`${process.env.PAYVASSEL_URL}api/external/request/customerReservedAccount/`,
+            data, { headers: header }
+        )
+        return request
+    }catch(err){
+        console.log(err)
+        return ;
+    }
 }

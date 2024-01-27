@@ -9,7 +9,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req,res)=>{
-    console.log(process.env.PAYVASSEL_URL)
     res.send("<h1>hello brother</h1>")
 })
 
@@ -18,7 +17,14 @@ app.get('/', (req,res)=>{
 app.post("/create/account",async(req,res)=>{
     const {email, phoneNumber, name} = req.body;
 const response = await payvassel.createAccount({email, name, phoneNumber})
-res.json({responseObj:response})
+console.log(response.data)
+if(!response)
+    return res.json({msg:"unable to create account"})
+res.json({responseObj:"request completed"})
+})
+
+app.post("/debit", (req,res)=>{
+    payvassel.recievePayment(req,res)
 })
 
 app.listen(2000, console.log("server is listen on port 2000"))
